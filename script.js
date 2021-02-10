@@ -6,17 +6,23 @@
 //1.
 let div = document.createElement('div');
 let grid = document.getElementsByClassName('container')[0];
-let length = 4;
+let length = 100;
 for (let i=1;i<length+1;i++) {
     for (let j=1;j<length+1;j++) {
-        div = document.createElement('div')
+        div = document.createElement('div');
+        div.setAttribute('class', 'box');
         div.style.cssText = `grid-column-start:${i};grid-row-start:${j}`;
-        div.addEventListener("mouseover", function() {
-            div.classList.add("sketched"); 
-        })
         grid.appendChild(div);
 
     }     
 }
-  
+let boxes = document.getElementsByClassName('box')
 
+let sketchFunction = function(x) {
+    boxes[x].classList.add("sketched");
+}
+for (let n=0; n< boxes.length; n++) {
+    boxes[n].addEventListener("mouseover", function(){
+        sketchFunction(n)
+    });
+}
