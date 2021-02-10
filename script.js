@@ -4,10 +4,14 @@
 //4. That's it!
 
 //1.
-let div = document.createElement('div')
-let grid = document.getElementsByClassName('container')[0]
-for (let i=0;i<16;i++) {
-    div = document.createElement('div')
-    grid.appendChild(div);
+let div = document.createElement('div');
+let grid = document.getElementsByClassName('container')[0];
+let length = 100;
+for (let i=1;i<length+1;i++) {
+    for (let j=1;j<length+1;j++) {
+        div = document.createElement('div')
+        div.style.cssText = `grid-column-start:${i};grid-row-start:${j}`;
+        grid.appendChild(div);
+    }     
 }
     
