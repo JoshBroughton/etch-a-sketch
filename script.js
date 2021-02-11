@@ -6,8 +6,10 @@
 //1.
 let div = document.createElement('div');
 let grid = document.getElementsByClassName('container')[0];
-let length = 100;
-for (let i=1;i<length+1;i++) {
+let initLength = 25;
+
+function drawGrid(length) {
+    for (let i=1;i<length+1;i++) {
     for (let j=1;j<length+1;j++) {
         div = document.createElement('div');
         div.setAttribute('class', 'box');
@@ -15,14 +17,16 @@ for (let i=1;i<length+1;i++) {
         grid.appendChild(div);
 
     }     
+    }
 }
+drawGrid(initLength);    
 let boxes = document.getElementsByClassName('box')
 
 let sketchFunction = function(x) {
     boxes[x].classList.add("sketched");
 }
 for (let n=0; n< boxes.length; n++) {
-    boxes[n].addEventListener("mouseover", function(){
+    boxes[n].addEventListener("mouseenter", function(){
         sketchFunction(n)
     });
 }
