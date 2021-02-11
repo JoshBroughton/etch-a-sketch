@@ -35,4 +35,12 @@ function gridListener() {
     }
 }   
 gridListener();
+//reset button function: need delete current divs and then simply call previous
+//functions with the user-defined length parameter
+function deleteGrid() {
+    let boxes = document.getElementsByClassName('box')
+    for (let i=0; i<boxes.length; i++) {
+        boxes[i].remove();
+    }
+}
 
