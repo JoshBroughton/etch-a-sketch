@@ -6,7 +6,7 @@
 
 //initialize variables and set a default grid size on page loading
 let grid = document.getElementsByClassName('container')[0];
-let initLength = 25;
+let initLength = 50;
 
 //takes the specified length of one side of the grid and generates a square grid
 //divs which are appended under the grid container and assigned column and row 
@@ -39,8 +39,20 @@ gridListener();
 //functions with the user-defined length parameter
 function deleteGrid() {
     let boxes = document.getElementsByClassName('box')
-    for (let i=0; i<boxes.length; i++) {
-        boxes[i].remove();
+    let loops = boxes.length;
+    for (let i=0; i<loops; i++) {
+        boxes[0].remove();
     }
 }
-
+function resetGrid() {
+    deleteGrid();
+    let newLength = Number(prompt('Enter the new length of each side as a number, max 100', '50'));
+    if (newLength > 100 || isNaN(newLength)) {
+        alert("You didn't enter a valid number, so the length was defaulted to 50");
+        drawGrid(50);
+    } else {
+        drawGrid(newLength);
+    }
+    gridListener();
+}
+document.getElementById('resetBtn').addEventListener('click', resetGrid);
